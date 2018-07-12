@@ -24,6 +24,8 @@ RUN cd opencv && \
           -D INSTALL_C_EXAMPLES=OFF \
           -D BUILD_PERF_TESTS=OFF \
           -D BUILD_TESTS=OFF \
+          -D BUILD_opencv_apps=OFF \
+          -D BUILD_DOCS=OFF \
           -D INSTALL_PYTHON_EXAMPLES=OFF \
           -D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules \
           -D BUILD_EXAMPLES=OFF .. && \
