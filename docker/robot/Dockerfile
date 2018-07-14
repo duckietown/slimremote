@@ -14,7 +14,7 @@ RUN cd opencv && \
           -D BUILD_opencv_apps=OFF \
           -D BUILD_DOCS=OFF \
           -D INSTALL_PYTHON_EXAMPLES=OFF \
-          -D WITH_TBB=ON 
+          -D WITH_TBB=ON \
           -D WITH_OPENMP=ON \
           -D WITH_IPP=ON \
           -D CMAKE_BUILD_TYPE=RELEASE \
