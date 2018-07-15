@@ -35,9 +35,7 @@ RUN cd opencv && \
           -DPYTHON_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") .. \
           -D BUILD_EXAMPLES=OFF ..
           
-RUN CORES=$(nproc --all) && \
-    echo "Cores: $CORES" && \
-    make -j $CORES && \
+RUN make -j8 && \
     make install && \
     ldconfig
     
