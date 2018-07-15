@@ -6,29 +6,7 @@ RUN cd opencv && \
     mkdir build && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
-          -D CMAKE_INSTALL_PREFIX=/usr/local \
-          -D INSTALL_C_EXAMPLES=OFF \
-          -D BUILD_PERF_TESTS=OFF \
-          -D BUILD_TESTS=OFF \
-          -D INSTALL_TESTS=OFF \
-          -D BUILD_opencv_apps=OFF \
-          -D BUILD_DOCS=OFF \
-          -D INSTALL_PYTHON_EXAMPLES=OFF \
-          -D WITH_TBB=ON \
-          -D BUILD_TBB=ON \
-          -D WITH_OPENMP=ON \
-          -D WITH_IPP=ON \
-          -D CMAKE_BUILD_TYPE=RELEASE \
-          -D WITH_NVCUVID=ON \
-          -D WITH_CUDA=ON \
-          -D WITH_CSTRIPES=ON \
-          -D WITH_OPENCL=ON \
-          -D BUILD_opencv_python2=OFF \
-          -D BUILD_opencv_python3=ON \
-          -D ENABLE_NEON=ON \
-          -D ENABLE_VFPV3=ON \
-          #-D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules \
-          -D BUILD_EXAMPLES=OFF .. && \
+          -D CMAKE_INSTALL_PREFIX=/usr/local .. && \
     make -j4 && \
     make install && \
     ldconfig
