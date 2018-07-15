@@ -15,6 +15,7 @@ RUN cd opencv && \
           -D BUILD_DOCS=OFF \
           -D INSTALL_PYTHON_EXAMPLES=OFF \
           -D WITH_TBB=ON \
+          -D BUILD_TBB=ON \
           -D WITH_OPENMP=ON \
           -D WITH_IPP=ON \
           -D CMAKE_BUILD_TYPE=RELEASE \
@@ -22,12 +23,16 @@ RUN cd opencv && \
           -D WITH_CUDA=ON \
           -D WITH_CSTRIPES=ON \
           -D WITH_OPENCL=ON \
+          -D BUILD_opencv_python2=OFF \
+          -D BUILD_opencv_python3=ON \
+          -D ENABLE_NEON=ON \
+          -D ENABLE_VFPV3=ON \
           #-D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules \
           -D BUILD_EXAMPLES=OFF .. && \
     make -j4 && \
     make install && \
     ldconfig
-
+    
 # cleanup
 RUN rm -rf ~/opencv && \
     rm -rf ~/opencv_contrib && \
