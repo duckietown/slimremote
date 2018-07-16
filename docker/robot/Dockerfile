@@ -35,7 +35,8 @@ RUN cd opencv && \
           -DPYTHON_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") .. \
           -D BUILD_EXAMPLES=OFF ..
           
-RUN make -j8 && \
+RUN cd opencv/build/ && \
+    make -j8 && \
     make install && \
     ldconfig
     
