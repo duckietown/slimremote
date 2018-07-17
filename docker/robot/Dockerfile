@@ -13,13 +13,33 @@ RUN cd opencv && \
           -D INSTALL_TESTS=OFF \
           -D BUILD_opencv_apps=OFF \
           -D BUILD_DOCS=OFF \
+          -D BUILD_PNG=OFF \
+          -D BUILD_TIFF=OFF \
+          -D BUILD_JPEG=OFF \
+          -D BUILD_JASPER=OFF \
+          -D BUILD_ZLIB=OFF \
+          -D BUILD_EXAMPLES=OFF \
+          -D BUILD_opencv_java=OFF \
           -D INSTALL_PYTHON_EXAMPLES=OFF \
-          #-D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules \
-          -D BUILD_EXAMPLES=OFF .. && \
-    make -j4 && \
+          -D WITH_TBB=OFF \
+          -D BUILD_TBB=OFF \
+          -D WITH_OPENMP=ON \
+          -D WITH_IPP=ON \
+          -D CMAKE_BUILD_TYPE=RELEASE \
+          -D WITH_CUDA=OFF \
+          -D ENABLE_NEON=ON \
+          -D ENABLE_VFPV3=ON \
+          -D CMAKE_INSTALL_PREFIX=$(python3 -c "import sys; print(sys.prefix)") \
+          -D PYTHON_EXECUTABLE=$(which python3.6) \
+          -DPYTHON_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+          -DPYTHON_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") .. \
+          -D BUILD_EXAMPLES=OFF ..
+          
+RUN cd opencv/build/ && \
+    make -j8 && \
     make install && \
     ldconfig
-
+    
 # cleanup
 RUN rm -rf ~/opencv && \
     rm -rf ~/opencv_contrib && \
