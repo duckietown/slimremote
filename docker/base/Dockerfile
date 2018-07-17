@@ -17,7 +17,8 @@ RUN wget https://bootstrap.pypa.io/get-pip.py && \
 ADD https://github.com/opencv/opencv/archive/3.4.1.tar.gz opencv.tar.gz
 RUN tar -xvzf opencv.tar.gz && mv opencv-3.4.1 opencv
 
-RUN mkdir build && \
+RUN cd opencv && \
+    mkdir build && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D CMAKE_INSTALL_PREFIX=/usr/local \
